@@ -16,7 +16,7 @@ class redis_helper(object):
     def redis_get(self, key):
         res = self.r.get(key)
         res = json.loads(res)
-        #res = json.loads(res)
+        # res = json.loads(res)
         return res
 
     #0删除成功
@@ -37,10 +37,11 @@ if __name__ == '__main__':
              "task": {"type": "0", "slot": None}}
     value = json.dumps(value)
     dm = redis_helper()
-    # res = dm.redis_insert(sessionID, value)
-    # print(res)
+    res = dm.redis_insert(sessionID, value)
+    print(res)
     res = dm.redis_get(sessionID)
     print(res)
+    print(type(res))
     #res = json.loads(res)
     #print(type(res))
     # res = dm.management(sessionID, content)

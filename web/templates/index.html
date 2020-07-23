@@ -1,0 +1,53 @@
+<!--<!DOCTYPE html>-->
+<html>
+<head>
+
+<meta charset="utf-8">
+<title>PINGAN QA DEMO</title>
+<link rel="stylesheet" type="text/css" href='static/i.css'/>
+
+</head>
+<body>
+    {% load staticfiles %}
+    <h1 class="title">PINGAN QA DEMO</h1>
+    <img class="big_img" style="width:100%;height:470px" src="static/2.jpg" alt="My image"/>
+    <div id="main">
+    <h3 class="input_h3">文本输入<h3/>
+
+    <form action="/" method="post">
+    {% csrf_token %}
+        <div class="bg">
+        <textarea rows="30" cols="100" class="input" name="user_say"> {{ input }} </textarea>
+        <input class="bt" type="submit" value="提交文本">
+        <p>返回答案-------------------------------------------------------------------------------------------------------------------------------</p>
+        <span>聊天记录<span/><span class="s2">问题示例<span/>
+        <div>
+        <textarea class="t2" rows="30" cols="90" name="answer"> {{answer}} </textarea>
+            <textarea class="t2" rows="30" cols="90" name="boson_res" wrap="physical">问实体属性：
+家庭财产保险的价格是多少
+一年期意外险的保单形式是什么
+平安e生保和一年期意外险的价格分别是多少
+
+根据关系问另一个实体：
+我想看一下平安e生保的保险条款
+一年期意外险都有哪些保障
+一年期意外险属于什么类型的保险
+交通意外类型的保险有哪些
+
+两跳查询：
+一年期意外险类型的保险还有哪些
+儿童综合医疗类型的保险还有哪些
+
+faq:
+什么是原发性癌症？
+什么是原位癌？
+我可以为其他人投保吗？
+
+            </textarea>
+        </div>
+        </div>
+    </form>
+	<div/>
+    
+</body>
+</html>

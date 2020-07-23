@@ -9,11 +9,11 @@ class es_helper(object):
         self.mapping_faq = '''
                       {"settings": {"number_of_shards": 1, "number_of_replicas": 0},
                         "mappings": {
+                        "product": {
                                "properties":{
                                    "question":{
-                                       "type":"text",
-                                       "analyzer":"ik_max_word",
-                                       "search_analyzer":"ik_max_word"
+                                       "type":"text"
+
                                    },
                                    "answer":{
                                        "type":"text",
@@ -24,6 +24,7 @@ class es_helper(object):
                                      "index":"false"
                                    }
                                
+                            }
                             }
                         }
                       }
@@ -133,12 +134,12 @@ class es_helper(object):
 
 if __name__ == '__main__':
     es = es_helper()
-    # res = es._build_index("faq")
-    # es.import_data("./data/qa.txt")
-    # res = es.es_search("承保机型有哪些？", size=1)
+    res = es._build_index("faq", es.mapping_faq)
+    es.import_data("./data/qa.txt")
+    res = es.es_search("承保机型有哪些？", size=1)
 
     # res = es._build_index("ner", es.mapping_ner)
     # es.import_data_ner("./data/ner.vocab")
-    res = es.es_search_ner("平安e生保和老年综合医疗保险的价格是多少？", size=5)
+    # res = es.es_search_ner("平安e生保和老年综合医疗保险的价格是多少？", size=5)
     # res = es._delete_index("ner")
     print(res)
